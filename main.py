@@ -1,6 +1,7 @@
 import unittest
 
 from flask import request, make_response, redirect, render_template, session
+from flask_login import login_required
 
 from src.app import create_app
 from src.firestore_service import get_users, get_todos
@@ -17,6 +18,7 @@ def index() -> object:
 
 
 @app.route("/hello")
+@login_required
 def hello() -> object:
     user_ip = session.get("user_ip")
     username = session.get("username")
@@ -26,10 +28,6 @@ def hello() -> object:
         "todos": get_todos(user_id=username),
         "username": username,
     }
-
-    users = get_users()
-    for user in users:
-        user = user.to_dict()
 
     return render_template("hello.html", **context)
 
