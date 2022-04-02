@@ -6,7 +6,7 @@ from src.firestore_service import get_user
 class UserData:
     def __init__(self, username: str, password: str) -> None:
         self.username = username
-        self.pasword = password
+        self.password = password
 
 
 class UserModel(UserMixin):
