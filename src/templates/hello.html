@@ -21,7 +21,7 @@
 
     <ul>
         {% for todo in todos %}
-            {{ macros.render_todo(todo) }}
+            {{ macros.render_todo(todo.to_dict()) }}
         {% endfor %}
     </ul>
 {% endblock %}
