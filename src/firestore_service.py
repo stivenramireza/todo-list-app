@@ -17,3 +17,8 @@ def get_user(user_id: str) -> object:
 
 def get_todos(user_id: str) -> object:
     return db.collection("users").document(user_id).collection("todos").get()
+
+
+def user_post(user_data: object) -> None:
+    user_ref = db.collection("users").document(user_data.username)
+    user_ref.set({"password": user_data.password})
