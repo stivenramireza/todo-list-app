@@ -19,9 +19,16 @@
         <a href="{{ url_for('index') }}">Go to home</a>
     {% endif %}
 
-    <ul>
-        {% for todo in todos %}
-            {{ macros.render_todo(todo.to_dict()) }}
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <h2>Create a new task</h2>
+        {{ wtf.quick_form(todo_form) }}
+    </div>
+
+    <div class="container">
+        <ul class="list-group">
+            {% for todo in todos %}
+                {{ macros.render_todo(todo, delete_form, update_form) }}
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

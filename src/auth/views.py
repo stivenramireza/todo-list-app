@@ -4,7 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 from src.auth.app import auth
 from src.forms import LoginForm
-from src.firestore_service import get_user, user_post
+from src.firestore_service import get_user, add_user
 from src.models import UserData, UserModel
 
 
@@ -54,7 +54,7 @@ def signup() -> object:
         if user_doc.to_dict() is None:
             hashed_password = generate_password_hash(password)
             user_data = UserData(username, hashed_password)
-            user_post(user_data)
+            add_user(user_data)
 
             user = UserModel(user_data)
             login_user(user)

@@ -5,3 +5,7 @@ html * {
 img {
     max-width: 30px;
 }
+
+.container {
+    margin-bottom: 25px;
+}

@@ -31,6 +31,9 @@
                     <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
                 {% endif %}
                 <li><a href="{{ url_for('index') }}">Inicio</a></li>
+                {% if not current_user.is_authenticated %}
+                    <li><a href="{{ url_for('auth.signup') }}">Signup</a></li>
+                {% endif %}
                 <li><a href="https://platzi.com" target="_blank">Platzi</a></li>
             </ul>
         </div>
